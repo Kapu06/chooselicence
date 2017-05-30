@@ -1,0 +1,18 @@
+image: ruby:2.4
+
+
+before_script:
+  - bundle install
+  - gem install execjs
+  - script/bootstrap
+
+pages:
+  stage: deploy
+  script:
+  - script/server
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
+
